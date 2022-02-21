@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Joe's Hotdog Stand</title>
+
+        <style>
+            body {
+                font-family: Arial;
+                overflow: hidden; /* Hide scrollbars */
+            }
+            .menu {
+                border: 1px black solid;
+                background-color: rgba(243, 216, 127, 0.781);
+                position: relative;
+                width: 300px;
+                height: 400px;
+                padding: 20px;
+
+                /* margin: 20px; */
+                margin-left: 50px;
+                margin-right: 50px;
+                margin-top: 30px;
+                top: -425px;
+            }
+            .title {
+                font-size: 2.5em;
+                position: relative;
+                left: 100px;
+            }
+            .grid {
+                display: grid;
+                grid-template-columns: auto auto;
+                gap: 20px 20px;
+                
+            }
+            .grid-item {
+                padding: 30px;
+                font-size: 1.5em;
+                text-align:left; 
+            }
+            .discount {
+                text-align: center;
+                margin: 20px;
+            }
+            .img {
+                
+                /* display: inline; */
+                height: 450px;
+                width: 830px;
+                /* border-radius: 50%; */
+
+                background-image: url("call-me-hangry-HP9vpVGq-WA-unsplash.jpg");
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center center;
+
+                position: relative;
+                left: 500px;
+                /* top: 450px; */
+                margin-right: 50px;
+                margin-top: 30px;
+                top: 50px;
+            }
+            .order {
+                display: grid;
+                grid-template-rows: auto auto;
+                gap: 10px;
+
+                position: relative;
+
+                /* left: 10px; */
+                bottom: 400px;
+            }
+            
+        </style>
+        
+    </head>
+
+    <body>
+
+        <!-- title -->
+        <h1 style="text-align: center;">Joe's Hotdog Stand</h1>
+        <p style="text-align: center;">
+            Since 1988, we have been offering the best hotdogs around to the
+            Greater Boston area. We are pleased to announce that we will be
+            continuing to offer hotdogs, fries, and drinks during the COVID19
+            pandemic on a takeout only basis.
+        </p>
+
+        <!-- bottom stuff -->
+        <div class="decor">
+            <!-- img -->
+            <div class="img"></div>
+            <!-- menu object -->
+            <div class="menu">
+                <div class="title">Menu</div>
+                <div class="grid">
+                    <div class="grid-item">Hotdogs</div>
+                    <div class="grid-item">$3.75</div>
+                    <div class="grid-item">Fries</div>
+                    <div class="grid-item">$2.00</div>
+                    <div class="grid-item">Drinks</div>
+                    <div class="grid-item">$1.80</div>
+                </div>
+                <div class="discount">
+                    Orders of over $20 get 10% off!
+                </div>
+            </div>
+        </div>
+
+        
+        <!-- order button -->
+        <div class="order">
+            <h3 style="justify-self: center;">Place an order below</h3>
+            <button style="justify-self: center;" style="width: 50px;" onclick="order()">Order</button>
+        </div>
+        <script language="javascript">
+            function order() {
+                let hotdogs = prompt("How many hotdogs do you want?", "");
+                hotdogs = parseInt(hotdogs);
+
+                let fries = prompt("How many fries do you want?", "");
+                fries = parseInt(fries);
+
+                let drinks = prompt("How many drinks do you want?", "");
+                drinks = parseInt(drinks);
+
+                let h_price, f_price, d_price;
+                h_price = 3.75;
+                f_price = 2;
+                d_price = 1.8;
+
+                let subtotal = (hotdogs * h_price) + (fries * f_price) + (drinks * d_price);
+
+                document.write("Items ordered:<br>")
+                document.write(hotdogs + " hotdog(s): $" + (hotdogs * h_price) + "<br>");
+                document.write(fries + " fries: $" + (fries * f_price) + "<br>");
+                document.write(drinks + " drink(s): $" + (drinks * d_price) + "<br>");
+                document.write("<br>");
+                document.write("Subtotal: $" + subtotal.toFixed(2));
+                document.write("<br>");
+
+                if (subtotal >= 20) {
+                    discount = .1;
+                    document.write("Discount: 10%<br>");
+                    subtotal = .9 * subtotal;
+                    document.write("Subtotal: $" + subtotal.toFixed(2));
+                    document.write("<br>");
+                }
+
+                const tax = 1 - .0625;
+                const total = subtotal * tax;
+
+                document.write("Total: $" + total.toFixed(2));
+
+                document.write("<br><br>Your order has been placed! Please pay upon pick up.");
+            }
+        </script>
+        
+    </body>
+
+</html>
